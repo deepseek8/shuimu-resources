@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>提莫资源库 · 更新清单</title>
+<style>
+  :root {
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --primary: #4c6ef5;
+    --primary-dark: #3b5bdb;
+    --text: #1f2933;
+    --muted: #7b8794;
+    --border: #e4e7eb;
+    --head: #f8f9fc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    padding: 24px 16px 48px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 8px; }
+  h1 { font-size: 24px; font-weight: 700; letter-spacing: .5px; }
+  .intro {
+    background: linear-gradient(135deg, #eef2ff, #f8f9fc);
+    border: 1px solid #dbe4ff; border-radius: 12px;
+    padding: 16px 20px; margin: 16px 0 18px;
+    color: var(--text); font-size: 14px; line-height: 1.75; text-align: center;
+  }
+  .search {
+    width: 100%; padding: 11px 16px; font-size: 15px;
+    border: 1px solid var(--border); border-radius: 12px;
+    background: #fff; margin-bottom: 14px; outline: none; transition: border-color .2s;
+  }
+  .search:focus { border-color: var(--primary); }
+  .count { color: var(--muted); font-size: 13px; margin-bottom: 12px; text-align: right; }
+  .sec-title { font-size: 16px; font-weight: 700; margin: 22px 0 12px; padding-left: 10px; border-left: 4px solid var(--primary); }
+
+  .day { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 18px; overflow: hidden; }
+  .day-head {
+    background: var(--head); padding: 10px 16px; font-weight: 600; font-size: 15px;
+    display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border);
+  }
+  .day-head .cnt { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .day-body { padding: 2px 16px 6px; }
+  .item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 2px; border-bottom: 1px solid var(--border); }
+  .item:last-child { border-bottom: none; }
+  .item .name { flex: 1; font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item .seq { color: var(--muted); font-size: 12px; margin-right: 8px; flex: none; }
+  .btn { flex: none; text-decoration: none; color: #fff; font-weight: 600; background: var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 13px; transition: background .2s; white-space: nowrap; }
+  .btn:hover { background: var(--primary-dark); }
+  .empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+  .months { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .month-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px; text-decoration: none; color: var(--text);
+    border-bottom: 1px solid var(--border); transition: background .15s;
+  }
+  .month-item:last-child { border-bottom: none; }
+  .month-item:hover { background: var(--head); }
+  .month-item .label { font-size: 15px; font-weight: 500; }
+  .month-item .badge { font-size: 12px; color: var(--muted); }
+
+  .back { display: inline-block; margin-bottom: 14px; color: var(--primary); text-decoration: none; font-size: 14px; }
+  .back:hover { text-decoration: underline; }
+  .page-title { font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 4px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← 返回首页</a>
+<div class="page-title">2026年10月 更新记录</div>
+<input class="search" id="search" type="text" placeholder="搜索本月资源名称…" />
+<div class="count" id="count"></div>
+<div id="list"></div>
+<script>
+const DAYS = [{"date": "2026年10月27日", "items": [{"name": "AI暴力涨粉教学，外来技术请自行测试", "share": "https://pan.quark.cn/s/130aed8d2b83"}, {"name": "WorkBuddy漫剧AI工作台实战课，掌握AI漫剧创作流程", "share": "https://pan.quark.cn/s/7a484dbf2d3c"}, {"name": "Instagram跨境外贸私域实战课，零基础也能跑通海外订单", "share": "https://pan.quark.cn/s/f0255ca62dd3"}, {"name": "MiniMax-H3从入门到实战全流程，零基础也能快速上手", "share": "https://pan.quark.cn/s/2c3e2f279072"}, {"name": "千川投放从入门到精通，新手也能跑通高ROI投放", "share": "https://pan.quark.cn/s/a6e5babe5080"}, {"name": "《普通人破局醒脑指南》：藏在人性中的生存智慧", "share": "https://pan.quark.cn/s/0a93b58132fa"}, {"name": "高质量插画教程，多种风格系统提升绘画能力", "share": "https://pan.quark.cn/s/1d1b3b3f092e"}, {"name": "OpenFilm一键成片工具，不会剪辑也能做短视频宣传片", "share": "https://pan.quark.cn/s/90ded5e03cab"}, {"name": "恐龙争霸动画科普，带孩子认识恐龙界的生存绝技", "share": "https://pan.quark.cn/s/078476cd30b1"}]}];
+const RECENT_ONLY = false;
+
+  let query = "";
+  const listEl = document.getElementById("list");
+  const countEl = document.getElementById("count");
+
+  function getDays() {
+    if (!query) return DAYS;
+    const q = query.toLowerCase();
+    return DAYS.map(function (d) {
+      const items = d.items.filter(function (it) { return it.name.toLowerCase().indexOf(q) > -1; });
+      return { date: d.date, items: items };
+    }).filter(function (d) { return d.items.length > 0; });
+  }
+
+  function render() {
+    const days = getDays();
+    if (days.length === 0) {
+      listEl.innerHTML = '<div class="empty">没有匹配的资源</div>';
+      countEl.textContent = "";
+      return;
+    }
+    const totalItems = days.reduce(function (s, d) { return s + d.items.length; }, 0);
+    listEl.innerHTML = "";
+    let seq = 1;
+    days.forEach(function (d) {
+      listEl.insertAdjacentHTML("beforeend", renderDay(d, seq));
+      seq += d.items.length;
+    });
+    countEl.textContent = "共 " + totalItems + " 条 · " + days.length + " 天";
+  }
+
+  function renderDay(day, startSeq) {
+    let rows = "";
+    day.items.forEach(function (it, i) {
+      rows += '<div class="item"><div class="name"><span class="seq">' + (startSeq + i) + '.</span>' + it.name + '</div>'
+            + '<a class="btn" href="' + it.share + '" target="_blank" rel="noopener">保存</a></div>';
+    });
+    return '<div class="day"><div class="day-head"><span>' + day.date + '</span><span class="cnt">' + day.items.length + ' 条</span></div><div class="day-body">' + rows + '</div></div>';
+  }
+
+  document.getElementById("search").addEventListener("input", function (e) {
+    query = e.target.value.trim().toLowerCase();
+    render();
+  });
+  render();
+
+</script>
+</div>
+<footer>免责声明：本站所有资源均收集于互联网，仅供学习与参考，版权归原作者所有，本站概不存储任何实质资源。</footer>
+</body>
+</html>
